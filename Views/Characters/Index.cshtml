@@ -1,0 +1,26 @@
+@model EntityCRUD.Models.CharacterViewModel
+
+@{
+    ViewData["Title"] = "Build a Character!";
+}
+<h1>Build a GOT Character</h1>
+<form asp-controller="Characters" asp-action="Create" method="post">
+    <div class="row">
+        <span asp-validation-for="Name"></span>
+        <label asp-for="Name"></label>
+        <input asp-for="Name">
+    </div>
+    <div class="row">
+        <span asp-validation-for="HouseId"></span>
+        <label asp-for="HouseId">House</label>
+        <select asp-for="HouseId">
+@{
+    foreach (var house in ViewBag.AllHouses)
+    {
+            <option value="@house.Id">@house.Name</option>
+    }
+}
+        </select>
+    </div>
+    <input type="submit" class="button-primary" value="Add Character">
+</form>

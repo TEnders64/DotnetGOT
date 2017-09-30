@@ -1,0 +1,13 @@
+<h1>Name: @ViewBag.House.Name</h1>
+<h2>Sigil: @ViewBag.House.Sigil</h2>
+<p>ID: @ViewBag.House.Id</p>
+<p>Created On: @ViewBag.House.CreatedAt</p>
+<ul>
+@{
+    foreach (var character in ViewBag.House.Characters)
+    {
+        <li><a href="/Characters/@character.Id">@character.Name</a></li>
+    }
+}
+</ul>
+<a href="/AllHouses">All Houses</a>

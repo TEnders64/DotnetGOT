@@ -1,0 +1,19 @@
+@model EntityCRUD.Models.HouseViewModel
+
+@{
+    ViewData["Title"] = "Build a House!";
+}
+<h1>Build a GOT House</h1>
+<form asp-controller="Houses" asp-action="Create" method="post">
+    <div class="row">
+        <span asp-validation-for="Name"></span>
+        <label asp-for="Name"></label>
+        <input asp-for="Name">
+    </div>
+    <div class="row">
+        <span asp-validation-for="Sigil"></span>
+        <label asp-for="Sigil"></label>
+        <input asp-for="Sigil">
+    </div>
+    <input type="submit" class="button-primary" value="Add House">
+</form>

@@ -1,0 +1,10 @@
+@{
+    foreach(var character in ViewBag.AllCharacters)
+    {
+        <div>
+            <h2>Name: @character.Name</h2>
+            <h5>House: @character.House.Name</h5>
+            <a href="/Houses/@character.HouseId">View House</a>
+        </div>
+    }
+}
