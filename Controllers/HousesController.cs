@@ -39,7 +39,7 @@ namespace EntityCRUD.Controllers
                     CreatedAt = DateTime.Now,
                     UpdatedAt = DateTime.Now
                 };
-                _context.Houses.Add(newHouse);
+                _context.houses.Add(newHouse);
                 _context.SaveChanges();
                 return RedirectToAction("AllHouses");
             }
@@ -50,7 +50,7 @@ namespace EntityCRUD.Controllers
         [Route("AllHouses")]
         public IActionResult AllHouses()
         {
-            ViewBag.AllHouses = _context.Houses.ToList();
+            ViewBag.AllHouses = _context.houses.ToList();
             return View();
         }
 
@@ -58,7 +58,7 @@ namespace EntityCRUD.Controllers
         [Route("Houses/{id}")]
         public IActionResult DisplayHouse(int id)
         {
-            ViewBag.House = _context.Houses.Include(house => house.Characters).SingleOrDefault(house => house.Id == id);
+            ViewBag.House = _context.houses.Include(house => house.Characters).SingleOrDefault(house => house.Id == id);
             return View();
         }
     }

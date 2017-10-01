@@ -24,7 +24,7 @@ namespace EntityCRUD.Controllers
         public IActionResult Index()
         {
             CharacterViewModel model= new CharacterViewModel();
-            ViewBag.AllHouses = _context.Houses;
+            ViewBag.AllHouses = _context.houses;
             return View(model);
         }
 
@@ -41,11 +41,11 @@ namespace EntityCRUD.Controllers
                     HouseId = model.HouseId
                 };
 
-                _context.Characters.Add(newCharacter);
+                _context.characters.Add(newCharacter);
                 _context.SaveChanges();
                 return RedirectToAction("AllCharacters");
             }
-            ViewBag.AllHouses = _context.Houses;
+            ViewBag.AllHouses = _context.houses;
             return View("Index", model);
         }
 
@@ -53,7 +53,7 @@ namespace EntityCRUD.Controllers
         [Route("Characters/AllCharacters")]
         public IActionResult AllCharacters()
         {
-            ViewBag.AllCharacters = _context.Characters.Include(character => character.House).ToList();
+            ViewBag.AllCharacters = _context.characters.Include(character => character.House).ToList();
             return View();
         }
 
@@ -61,7 +61,7 @@ namespace EntityCRUD.Controllers
         [Route("Characters/{id}")]
         public IActionResult DisplayCharacter(int id)
         {
-            ViewBag.Character = _context.Characters.Include(character => character.House).SingleOrDefault(character => character.Id == id);
+            ViewBag.Character = _context.characters.Include(character => character.House).SingleOrDefault(character => character.Id == id);
             return View();
         }
     }
